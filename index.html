@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23ece8df' text-anchor='middle'%3E01%3C/text%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Preksha Anand</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Preksha Anand: designer exploring the space between creativity, technology and human behaviour. DATA PRISON, NestLink, M.A.N.T.A, Ann Setu, voice assistant research and a video games study.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one long dark "memory dump". Everything is stored as bits until you look at it.
+   Single deliberate dark look; accent changes with the project in focus. */
+:root{
+  --void:#08090b;      /* page */
+  --ink:#101216;       /* panels */
+  --line:#23262c;      /* rules */
+  --bone:#ece8df;      /* main text */
+  --dim:#8d9097;       /* secondary text */
+  --faint:#555960;     /* tertiary */
+  --accent:#ece8df;    /* set per project at runtime */
+  --f-dot:"Doto","IBM Plex Mono",ui-monospace,monospace;
+  --f-sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gutR:max(16px,env(safe-area-inset-right,0px));
+  --max:1240px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--bone);font-family:var(--f-sans);font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--void)}
+::selection{background:var(--accent);color:var(--void)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3,p,ul,ol,figure,dl,dd{margin:0}
+.wrap{width:min(100%,var(--max));margin:0 auto;padding-left:var(--gut);padding-right:var(--gutR)}
+.mono{font-family:var(--f-mono)}
+.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+
+/* ---------- header ---------- */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(8,9,11,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:24px;min-height:56px}
+.logo{font-family:var(--f-mono);font-weight:600;font-size:14px;text-decoration:none;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.logo b{display:inline-grid;place-items:center;width:28px;height:28px;border:1px solid var(--bone);font-family:var(--f-dot);font-weight:900;font-size:14px;transition:background .3s,color .3s}
+.logo:hover b{background:var(--accent);border-color:var(--accent);color:var(--void)}
+nav{display:flex;gap:4px;margin-left:auto;align-items:center}
+nav a{font-family:var(--f-mono);font-size:13px;text-decoration:none;color:var(--dim);padding:6px 10px;border-radius:2px}
+nav a:hover{color:var(--void);background:var(--accent)}
+.clock{font-family:var(--f-mono);font-size:12px;color:var(--faint);letter-spacing:.06em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.clock span{color:var(--dim)}
+.rainbtn{font-family:var(--f-mono);font-size:12px;background:none;border:1px solid var(--line);color:var(--dim);padding:5px 10px;cursor:pointer;white-space:nowrap}
+.rainbtn:hover,.rainbtn[aria-pressed="true"]{color:var(--void);background:var(--accent);border-color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;border-bottom:1px solid var(--line)}
+#field{display:block;width:100%;height:clamp(260px,min(58vh,calc(62vw + 120px)),600px);cursor:crosshair;touch-action:pan-y}
+.hero-meta{padding-block:28px 40px}
+.role{font-size:clamp(20px,2.6vw,30px);line-height:1.3;font-weight:500;text-wrap:balance}
+.role em{font-style:normal;color:var(--accent);transition:color .4s}
+.boot{font-family:var(--f-mono);font-size:12.5px;line-height:1.75;color:var(--faint);white-space:pre;overflow:hidden}
+.boot .ok{color:var(--bone)}
+.hint{position:absolute;right:var(--gutR);top:16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);text-align:right;pointer-events:none}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(64px,9vw,120px)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:clamp(32px,5vw,56px);padding-bottom:16px;border-bottom:1px solid var(--line)}
+.sec-head h2{font-family:var(--f-dot);font-weight:900;font-size:clamp(40px,7vw,88px);line-height:.9;letter-spacing:-.01em}
+
+/* ---------- projects ---------- */
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(24px,4vw,64px);align-items:center;padding-block:clamp(36px,5vw,64px);border-bottom:1px solid var(--line)}
+.proj:nth-child(even) .pic{order:-1}
+.idx{font-family:var(--f-dot);font-weight:900;font-size:22px;color:var(--faint);letter-spacing:.08em;display:flex;align-items:center;gap:12px}
+.idx::after{content:"";height:1px;flex:1;background:var(--line)}
+.proj h3{font-family:var(--f-dot);font-weight:900;font-size:clamp(36px,5vw,68px);line-height:.98;margin-top:14px;transition:color .35s;text-wrap:balance}
+.proj:hover h3,.proj.on h3{color:var(--pa)}
+.kind{font-family:var(--f-mono);font-size:13px;color:var(--dim);margin-top:14px;letter-spacing:.02em}
+.proj p.desc{margin-top:18px;max-width:52ch;color:#c9c6bf}
+.meta{margin-top:20px;font-family:var(--f-mono);font-size:13px;color:var(--bone)}.meta span{color:var(--faint);letter-spacing:.12em;text-transform:uppercase;font-size:11.5px;margin-right:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding:0;list-style:none}
+.tags li{font-family:var(--f-mono);font-size:12px;padding:3px 9px;border:1px solid var(--line);color:var(--dim)}
+.links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px}
+.links a{font-family:var(--f-mono);font-size:14px;text-decoration:none;border-bottom:1px solid var(--faint);padding-bottom:2px}
+.links a:hover{color:var(--pa);border-color:var(--pa)}
+.pic{position:relative;margin:0;cursor:pointer;outline-offset:6px}
+.pic canvas{display:block;width:100%;max-width:100%;background:var(--ink)}
+.proj .pic canvas{aspect-ratio:2/1}
+.pic figcaption{display:flex;justify-content:space-between;gap:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:10px}
+.pic figcaption b{font-weight:500;color:var(--dim)}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px);align-items:start}
+.me canvas{aspect-ratio:4/5}
+.bio{font-size:clamp(19px,2vw,24px);line-height:1.5;text-wrap:pretty}
+.bio .hi{font-family:var(--f-dot);font-weight:900;font-size:clamp(34px,4.4vw,52px);line-height:1;display:block;margin-bottom:20px;color:var(--bone)}
+.regs{display:grid;border-top:1px solid var(--line);margin-top:40px}
+.reg{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+.reg dt{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;color:var(--faint);padding-top:3px}
+.reg dd{font-size:15.5px;color:#c9c6bf}
+
+/* ---------- terminal ---------- */
+.term{border:1px solid var(--line);background:var(--ink);font-family:var(--f-mono);font-size:14px;line-height:1.65}
+.term-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:12px;color:var(--faint)}
+.term-bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.term-bar i:first-child{background:var(--accent)}
+.term-bar span{margin-left:auto}
+#out{height:clamp(280px,46vh,440px);overflow:auto;padding:16px 18px 6px;white-space:pre-wrap;overflow-wrap:anywhere;color:#cfccc5}
+#out .cmd{color:var(--bone)}
+#out .cmd b{color:var(--accent);font-weight:500}
+#out .mut{color:var(--faint)}
+#out .acc{color:var(--accent)}
+#out a{color:var(--accent)}
+.prompt{display:flex;gap:10px;align-items:center;padding:10px 18px 16px}
+.prompt label{color:var(--accent);white-space:nowrap}
+#cmd{flex:1;min-width:0;background:none;border:0;color:var(--bone);font:inherit;caret-color:var(--accent);padding:4px 0}
+#cmd:focus{outline:none}
+.term:focus-within{border-color:#4a4d54}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips button{font-family:var(--f-mono);font-size:12.5px;background:none;color:var(--dim);border:1px solid var(--line);padding:6px 12px;cursor:pointer}
+.chips button:hover{color:var(--void);background:var(--accent);border-color:var(--accent)}
+
+/* ---------- contact ---------- */
+.contact h2.big{font-family:var(--f-dot);font-weight:900;font-size:clamp(48px,10vw,140px);line-height:.88;text-wrap:balance}
+.reach{display:grid;gap:14px;margin-top:48px}
+.reach .line{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--f-mono);font-size:clamp(16px,1.8vw,20px)}
+.reach .line span.k{color:var(--faint);font-size:12px;letter-spacing:.12em;text-transform:uppercase;width:80px}
+.reach a{text-decoration:none;border-bottom:1px solid var(--faint)}
+.reach a:hover{color:var(--accent);border-color:var(--accent)}
+.btn{font-family:var(--f-mono);font-size:12px;background:none;border:1px solid var(--line);color:var(--dim);padding:5px 10px;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+footer{border-top:1px solid var(--line);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--f-mono);font-size:12px;color:var(--faint)}
+
+/* ---------- overlays ---------- */
+#trail,#rain{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+#rain{z-index:60;opacity:0;transition:opacity .4s}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--accent);color:var(--void);font-family:var(--f-mono);font-size:13px;padding:8px 14px;z-index:70;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+
+@media (max-width:900px){
+  nav{display:none}
+  .hero-meta,.about-grid{grid-template-columns:1fr}
+  .proj{grid-template-columns:1fr}
+  .proj .pic{order:-1}
+  .hint{display:none}
+  .me{max-width:420px}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .clock{display:none}
+  .reg{grid-template-columns:1fr;gap:4px}
+  .boot{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<canvas id="trail" aria-hidden="true"></canvas>
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status"></div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Preksha Anand, back to top"><b>PA</b>preksha.anand</a>
+    <nav aria-label="Sections">
+      <a href="#about">/about</a><a href="#work">/work</a><a href="#shell">/shell</a><a href="#contact">/contact</a>
+    </nav>
+    <button class="rainbtn" id="rainBtn" type="button" aria-pressed="false" title="Make it rain bits">rain 01</button>
+
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding-block:0" aria-label="Introduction">
+    <canvas id="field" role="img" aria-label="The name Preksha Anand drawn in thousands of zeros and ones that scatter when you move over them"></canvas>
+    <div class="wrap hero-meta">
+      <p class="role" id="role">Designer exploring the space between <em>creativity</em>, <em>technology</em> and <em>human behaviour</em>.</p>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="about-h">/about</h2><span class="label">whoami</span></div>
+      <div class="about-grid">
+        <figure class="pic me" tabindex="0" aria-label="Photo of Preksha. Click to switch between the photo and its bits.">
+          <canvas role="img" aria-label="Preksha Anand, smiling, black and white portrait"></canvas>
+          <figcaption><b>preksha.jpg</b><span class="st">encoded</span></figcaption>
+        </figure>
+        <div>
+          <div class="bio">
+            <p>Hi! I’m Preksha, a designer who loves exploring the space between creativity, technology, and human behaviour. I’m curious about how people interact with the world around them, and how everyday experiences can become something unexpected, immersive, or thought-provoking. Through experimentation, creative coding, and interactive installations, I turn my questions and ideas into experiences that invite people to engage, feel, and see things differently...</p>
+          </div>
+          <dl class="regs">
+            <div class="reg"><dt>STUDIED</dt><dd>B.Tech in Information and Communication Technology @ DA-IICT <span style="white-space:nowrap">(2020–2024)</span><br>New Media Design at the National Institute of Design <span style="white-space:nowrap">(2025–present)</span></dd></div>
+            <div class="reg"><dt>BUILD</dt><dd>HTML, CSS, JavaScript, Python, Electronics, Phygital Prototyping</dd></div>
+            <div class="reg"><dt>DESIGN</dt><dd>Figma, Interaction design, interactive installations</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" aria-labelledby="work-h" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="work-h">/work</h2><span class="label">110<sub>2</sub> projects · each one decodes as you reach it</span></div>
+      <div id="projects"></div>
+    </div>
+  </section>
+
+  <section id="shell" aria-labelledby="shell-h" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="shell-h">/shell</h2><span class="label">talk to the site · try <span class="mono" style="color:var(--bone)">help</span></span></div>
+      <div class="term" id="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>visitor@preksha: ~</span></div>
+        <div id="out" aria-live="polite"></div>
+        <form class="prompt" id="pf" autocomplete="off">
+          <label for="cmd">visitor@preksha:~$</label>
+          <input id="cmd" type="text" spellcheck="false" autocapitalize="off" aria-label="Type a command, for example help">
+        </form>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-h" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <h2 class="big" id="contact-h">Let's build something.</h2>
+      <div class="reach" id="reach"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>PA = 01010000 01000001</span><span>Hand-built: HTML, CSS, JavaScript. No frameworks.</span><span>© 2026 Preksha Anand</span></div>
+</footer>
+
+<script>
+/* ======================== EDIT ME ======================== */
+const ME={
+  name:'Preksha Anand',
+  github:'preksha-05',
+  email:'preksha_a@gmail.com',
+  phone:'+91 92274 62213',
+  linkedin:'https://www.linkedin.com/in/preksha-anand-68463420b',
+  photo:'img/preksha.jpg',
+};
+// title = the project's name. tags = only the important ones. site:null means no live page (doc = a file to open instead)
+const PROJECTS=[
+  {bits:'000',id:'dataprison',repo:'DATA-Prison',title:'DATA PRISON',accent:'#ff4a3d',img:'img/covers/01-dataprison-cover.jpg',
+   kind:'Year: 2026',
+   desc:'An interactive installation about consent and personal data. It looks at how people think their data is collected, and how much of what is collected from them is actually consented to and how much is not.',
+   tags:['three.js','gesture tracking'],cap:'the city',live:'Enter the installation'},
+  {bits:'001',id:'nestlink',repo:'Nestlink',title:'NestLink',accent:'#ff7a5c',img:'img/covers/02-nestlink-cover.jpg',
+   kind:'Year: 2025',
+   desc:'A product design project about caring for ageing parents from a distance. It is grounded in the worry of adult children who live away from their parents, and the need to stay aware of their well-being without surveillance, dependency or asking parents to change how they live.',
+   tags:['product design','research','prototyping'],cap:'the lamp · night test'},
+  {bits:'010',id:'manta',repo:'M.A.N.T.A---MARINE-AUTONOMOUS-NEUTRALIZATION-TRACKING-ARRAY-',title:'M.A.N.T.A',accent:'#4fe3f0',img:'img/covers/03-manta-cover.jpg',
+   kind:'Year: 2025',
+   desc:'A speculative design project about ocean acidification. It is grounded in the fact that the ocean absorbs nearly a third of human-made CO\u2082, and asks whether migrating whales, which already cross the least-monitored waters, could help us monitor and protect ocean health.',
+   tags:['conceptualization','speculative design'],cap:'concept render · AI-assisted'},
+  {bits:'011',id:'annsetu',repo:'Ann-Setu',title:'Ann Setu',accent:'#2fd16a',img:'img/covers/04-annsetu-cover.jpg',
+   kind:'Year: 2023',
+   desc:'A UI/UX project about food waste and hunger. It is grounded in the gap between the surplus food wasted after weddings and large events and the many people who go hungry, with no reliable way for caterers to reach the NGOs who could distribute it.',
+   tags:['research','figma','ui'],cap:'onboarding · login · menu'},
+  {bits:'100',id:'voice',repo:'Voice-Assistant-Research',title:'Voice Assistant – Visible / Invisible',accent:'#b9a2ff',img:'img/covers/05-voice-cover.jpg',
+   kind:'Year: 2022',
+   desc:'An HCI research project about voice assistants. It is grounded in how assistants are moving from visible devices into walls and ceilings, and asks how the absence of a physical reference point changes the way people interact with them.',
+   tags:['hci','research','human behaviour study'],cap:'visible vs invisible',live:'Read the case study'},
+  {bits:'101',id:'videogames',repo:'Impact-of-Video-Games-on-Cognitive-Abilities-of-Individuals',title:'Video Game’s Impact on Cognitive Skills',accent:'#ffc93c',img:'img/covers/06-videogames-cover.jpg',site:null,doc:'video-games-cognitive-abilities-btp.pdf',
+   kind:'Year: 2024',
+   desc:'A B.Tech research project about gaming and cognition. It is grounded in how research on video games\u2019 effects is inconclusive and mostly self-reported, and asks whether playing actually changes reaction time and mouse accuracy when measured directly.',
+   tags:['hci','research','analysis','human behaviour study'],cap:'reaction time · 7 weeks',live:'Read the paper'},
+];
+/* ========================================================= */
+
+const $=s=>document.querySelector(s);
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE=matchMedia('(pointer: fine)').matches;
+const repoUrl=p=>`https://github.com/${ME.github}/${p.repo}`;
+const siteUrl=p=>p.site===null?(p.doc?`${repoUrl(p)}/blob/main/${p.doc}`:repoUrl(p)):(p.site||`https://${ME.github}.github.io/${p.repo}/`);
+const toBin=s=>[...new TextEncoder().encode(s)].map(b=>b.toString(2).padStart(8,'0')).join(' ');
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const rnd=(a,b)=>a+Math.random()*(b-a);
+let accent='#ece8df';
+function setAccent(c){accent=c;document.documentElement.style.setProperty('--accent',c);Field.tint(c)}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),1800)}
+
+/* ---------------- hero: name as particles ---------------- */
+const Field=(()=>{
+  const cv=$('#field'),ctx=cv.getContext('2d');
+  let W=0,H=0,dpr=1,step=8,n=0,hx,hy,x,y,vx,vy,bit,heat,sprites={},visible=true,dust=[];
+  const ptr={x:-9999,y:-9999};
+  function sprite(ch,col,sz){const c=document.createElement('canvas'),s=Math.ceil(sz*dpr);c.width=c.height=s;const g=c.getContext('2d');g.fillStyle=col;g.font=`700 ${s}px "IBM Plex Mono",monospace`;g.textAlign='center';g.textBaseline='middle';g.fillText(ch,s/2,s/2+s*.04);return c}
+  function makeSprites(){const sz=step*1.22;sprites={b0:sprite('0','#ece8df',sz),b1:sprite('1','#ece8df',sz),a0:sprite('0',accent,sz),a1:sprite('1',accent,sz),d0:sprite('0','#2a2d33',sz),d1:sprite('1','#2a2d33',sz)}}
+  function build(){
+    const r=cv.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;
+    step=Math.max(4,Math.min(7,Math.round(W/230)));
+    const off=document.createElement('canvas');off.width=W;off.height=H;const g=off.getContext('2d');
+    const two=W/H<2.3,lines=two?['PREKSHA','ANAND']:['PREKSHA ANAND'];
+    let fs=two?H*.4:H*.42;g.font=`700 ${fs}px "IBM Plex Sans",Arial,sans-serif`;
+    const widest=Math.max(...lines.map(l=>g.measureText(l).width));fs=Math.min(fs,fs*(W*.9)/widest);g.font=`700 ${fs}px "IBM Plex Sans",Arial,sans-serif`;
+    g.textAlign='center';g.textBaseline='middle';g.fillStyle='#fff';
+    const lh=fs*.98,top=H/2-(lines.length-1)*lh/2;lines.forEach((l,i)=>g.fillText(l,W/2,top+i*lh));
+    const d=g.getImageData(0,0,W,H).data,pts=[];
+    for(let yy=step/2;yy<H;yy+=step)for(let xx=step/2;xx<W;xx+=step){if(d[((yy|0)*W+(xx|0))*4+3]>128)pts.push(xx,yy)}
+    n=pts.length/2;hx=new Float32Array(n);hy=new Float32Array(n);x=new Float32Array(n);y=new Float32Array(n);vx=new Float32Array(n);vy=new Float32Array(n);bit=new Uint8Array(n);heat=new Float32Array(n);
+    for(let i=0;i<n;i++){hx[i]=pts[i*2];hy[i]=pts[i*2+1];bit[i]=Math.random()<.5;
+      if(RM){x[i]=hx[i];y[i]=hy[i]}else{const a=Math.random()*6.28,R=rnd(W*.3,W*.9);x[i]=W/2+Math.cos(a)*R;y[i]=H/2+Math.sin(a)*R*.6}}
+    dust=[];const nd=Math.round(W*H/5200);for(let i=0;i<nd;i++)dust.push({x:Math.random()*W,y:Math.random()*H,b:Math.random()<.5});
+    makeSprites();
+  }
+  function burst(px,py){for(let i=0;i<n;i++){const dx=x[i]-px,dy=y[i]-py,d=Math.hypot(dx,dy)||1;if(d<260){const f=(260-d)/260*18;vx[i]+=dx/d*f;vy[i]+=dy/d*f;bit[i]^=1;heat[i]=1}}}
+  function frame(){
+    if(!visible||!n)return;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+    const s=step*1.22,R=Math.max(70,W*.07),R2=R*R,sp=sprites;
+    for(const p of dust){if(Math.random()<.004)p.b=!p.b;ctx.drawImage(p.b?sp.d1:sp.d0,p.x-s/2,p.y-s/2,s,s)}
+    for(let i=0;i<n;i++){
+      if(!RM){const dx=x[i]-ptr.x,dy=y[i]-ptr.y,d2=dx*dx+dy*dy;
+        if(d2<R2){const d=Math.sqrt(d2)||1,f=(1-d/R)*2.4;vx[i]+=dx/d*f;vy[i]+=dy/d*f;heat[i]=1;if(Math.random()<.08)bit[i]^=1}
+        vx[i]+=(hx[i]-x[i])*.045;vy[i]+=(hy[i]-y[i])*.045;vx[i]*=.84;vy[i]*=.84;x[i]+=vx[i];y[i]+=vy[i];heat[i]*=.965}
+      if(Math.random()<.0025)bit[i]^=1;
+      const hot=heat[i]>.15;ctx.drawImage(hot?(bit[i]?sp.a1:sp.a0):(bit[i]?sp.b1:sp.b0),x[i]-s/2,y[i]-s/2,s,s)}
+  }
+  cv.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();ptr.x=e.clientX-r.left;ptr.y=e.clientY-r.top});
+  cv.addEventListener('pointerleave',()=>{ptr.x=ptr.y=-9999});
+  cv.addEventListener('pointerdown',e=>{const r=cv.getBoundingClientRect();burst(e.clientX-r.left,e.clientY-r.top)});
+  new IntersectionObserver(es=>{visible=es[0].isIntersecting}).observe(cv);
+  let rt,lastW=0;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{const r=cv.getBoundingClientRect();if(Math.abs(r.width-lastW)>40){lastW=r.width;build()}},200)});
+  return{build:()=>{lastW=cv.getBoundingClientRect().width;build()},frame,burst,tint(){if(n)makeSprites()},count:()=>n};
+})();
+
+/* ---------------- hero line: hovering a word borrows a project's colour ---------------- */
+function heroWords(){const pick=['dataprison','nestlink','voice'];$('#role').querySelectorAll('em').forEach((em,k)=>em.addEventListener('mouseenter',()=>setAccent(PROJECTS.find(p=>p.id===pick[k]).accent)))}
+
+/* ---------------- images stored as bits; they decode as you reach them ---------------- */
+class BitPic{
+  constructor(fig,src,onChange){this.fig=fig;this.cv=fig.querySelector('canvas');this.g=this.cv.getContext('2d');this.img=new Image();this.ready=false;this.on=false;this.inView=false;this.seen=false;this.onChange=onChange||(()=>{});
+    this.img.onload=()=>{this.ready=true;this.size();this.maybeAuto()};this.img.src=src;
+    new ResizeObserver(()=>this.size()).observe(this.cv);
+    new IntersectionObserver(es=>{this.inView=es[0].isIntersecting;this.maybeAuto()},{threshold:.35}).observe(this.cv);
+    fig.addEventListener('click',e=>{const r=this.cv.getBoundingClientRect();this.seen=true;this.setOn(!this.on,e.clientX-r.left,e.clientY-r.top)});
+    fig.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();this.seen=true;this.setOn(!this.on)}});
+  }
+  maybeAuto(){if(this.inView&&this.ready&&!this.seen){this.seen=true;setTimeout(()=>this.setOn(true),RM?0:300)}}
+  size(){if(!this.ready)return;const r=this.cv.getBoundingClientRect();if(!r.width)return;this.dpr=Math.min(devicePixelRatio||1,2);this.W=r.width;this.H=r.height;this.cv.width=r.width*this.dpr;this.cv.height=r.height*this.dpr;
+    // fit the image inside the frame without stretching (black bars if the shapes differ)
+    const k=Math.min(this.W/this.img.naturalWidth,this.H/this.img.naturalHeight);this.fw=this.img.naturalWidth*k;this.fh=this.img.naturalHeight*k;this.fx=(this.W-this.fw)/2;this.fy=(this.H-this.fh)/2;
+    this.cell=Math.max(6,Math.round(this.W/78));this.cols=Math.ceil(this.W/this.cell);this.rows=Math.ceil(this.H/this.cell);
+    const s=document.createElement('canvas');s.width=this.cols;s.height=this.rows;const sg=s.getContext('2d');sg.fillStyle='#08090b';sg.fillRect(0,0,this.cols,this.rows);sg.drawImage(this.img,this.fx/this.cell,this.fy/this.cell,this.fw/this.cell,this.fh/this.cell);
+    const d=sg.getImageData(0,0,this.cols,this.rows).data,N=this.cols*this.rows;this.col=new Array(N);this.lum=new Float32Array(N);this.bit=new Uint8Array(N);
+    for(let i=0;i<N;i++){let r=d[i*4],g=d[i*4+1],b=d[i*4+2];const l=(.299*r+.587*g+.114*b)/255;this.lum[i]=l;
+      const k2=Math.min(2.4,.55/Math.max(.08,l)+.4);r=Math.min(255,r*k2+30);g=Math.min(255,g*k2+30);b=Math.min(255,b*k2+30);this.col[i]=`rgb(${r|0},${g|0},${b|0})`;this.bit[i]=l>.42?1:0}
+    this.rev=new Float32Array(N).fill(this.on?1:0);this.at=new Float32Array(N);this.dir=this.on?1:-1;this.dirty=true}
+  setOn(v,px,py){if(!this.ready||v===this.on)return;this.on=v;this.dir=v?1:-1;const now=performance.now(),cx=px??this.W/2,cy=py??this.H/2,maxd=Math.hypot(this.W,this.H);
+    for(let j=0;j<this.rows;j++)for(let i=0;i<this.cols;i++){const k=j*this.cols+i,d=Math.hypot(i*this.cell-cx,j*this.cell-cy);this.at[k]=now+(RM?0:d/maxd*(v?620:380)+Math.random()*120)}
+    this.animating=true;this.onChange(v)}
+  drawCell(k,a){const g=this.g,c=this.cell,i=k%this.cols,j=(k/this.cols)|0,X=i*c,Y=j*c;g.globalAlpha=a;g.fillStyle='#08090b';g.fillRect(X,Y,c,c);
+    g.globalAlpha=a*(.18+this.lum[k]*.62);g.fillStyle=this.col[k];g.fillText(this.bit[k]?'1':'0',X+c/2,Y+c/2+.5)}
+  frame(now){if(!this.ready||!this.rev)return;const g=this.g,N=this.rev.length;
+    if(this.animating||this.dirty){g.setTransform(this.dpr,0,0,this.dpr,0,0);g.globalAlpha=1;g.fillStyle='#08090b';g.fillRect(0,0,this.W,this.H);g.drawImage(this.img,this.fx,this.fy,this.fw,this.fh);
+      g.font=`600 ${this.cell*1.02}px "IBM Plex Mono",monospace`;g.textAlign='center';g.textBaseline='middle';let moving=false;
+      for(let k=0;k<N;k++){if(this.animating){const p=Math.max(0,Math.min(1,(now-this.at[k])/260));if(this.dir>0){if(p>this.rev[k])this.rev[k]=p}else if(1-p<this.rev[k])this.rev[k]=1-p;if(this.dir>0?this.rev[k]<1:this.rev[k]>0)moving=true}
+        const a=1-this.rev[k];if(a>0.01)this.drawCell(k,a)}
+      g.globalAlpha=1;this.animating=moving;this.dirty=false;return}
+    if(!this.on&&this.inView&&!RM){g.setTransform(this.dpr,0,0,this.dpr,0,0);g.font=`600 ${this.cell*1.02}px "IBM Plex Mono",monospace`;g.textAlign='center';g.textBaseline='middle';
+      for(let q=0;q<14;q++){const k=(Math.random()*N)|0;this.bit[k]^=1;this.drawCell(k,1)}g.globalAlpha=1}}
+}
+const pics=[];
+function renderProjects(){
+  const wrap=$('#projects');
+  PROJECTS.forEach(p=>{const a=document.createElement('article');a.className='proj';a.id=p.id;a.style.setProperty('--pa',p.accent);
+    a.innerHTML=`<div><div class="idx">${p.bits}</div><h3>${esc(p.title)}</h3><div class="kind">${esc(p.kind)}</div><p class="desc">${esc(p.desc)}</p>
+      <ul class="tags">${p.tags.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+      <div class="links"><a href="${siteUrl(p)}" target="_blank" rel="noopener">${p.live||'Open project'} ↗</a><a href="${repoUrl(p)}" target="_blank" rel="noopener">Repository ↗</a></div></div>
+      <figure class="pic" tabindex="0" aria-label="${esc(p.title)} cover. Click or press Enter to switch between the cover and its bits."><canvas role="img" aria-label="${esc(p.title)}"></canvas><figcaption><b>${esc(p.cap)}</b><span class="st">encoded · ${p.bits}</span></figcaption></figure>`;
+    wrap.appendChild(a);const fig=a.querySelector('.pic'),st=fig.querySelector('.st');
+    const bp=new BitPic(fig,p.img,v=>{a.classList.toggle('on',v);st.textContent=(v?'decoded':'encoded')+' · '+p.bits});bp.p=p;pics.push(bp);
+    a.addEventListener('mouseenter',()=>setAccent(p.accent));fig.addEventListener('click',()=>setAccent(p.accent));
+  });
+  const me=$('.me'),st=me.querySelector('.st');pics.push(new BitPic(me,ME.photo,v=>st.textContent=v?'decoded':'encoded'));
+}
+
+/* ---------------- cursor trail + bit rain ---------------- */
+const Trail=(()=>{const cv=$('#trail'),g=cv.getContext('2d');let bits=[],lx=0,ly=0,dpr=1;
+  const size=()=>{dpr=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*dpr;cv.height=innerHeight*dpr};size();addEventListener('resize',size);
+  if(FINE&&!RM)addEventListener('pointermove',e=>{const d=Math.hypot(e.clientX-lx,e.clientY-ly);if(d>16){lx=e.clientX;ly=e.clientY;bits.push({x:lx+rnd(-6,6),y:ly+rnd(-6,6),b:Math.random()<.5?'1':'0',t:performance.now()});if(bits.length>70)bits.shift()}});
+  return{frame(now){g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,innerWidth,innerHeight);if(!bits.length)return;g.font='500 12px "IBM Plex Mono",monospace';g.textAlign='center';g.fillStyle=accent;
+    bits=bits.filter(p=>now-p.t<800);for(const p of bits){const k=(now-p.t)/800;g.globalAlpha=(1-k)*.8;g.fillText(p.b,p.x,p.y+k*18)}g.globalAlpha=1}}})();
+const Rain=(()=>{const cv=$('#rain'),g=cv.getContext('2d');let drops=[],running=false,until=0,dpr=1,fs=18,veil=0,last=0,W=0,H=0;
+  const mouse={x:-999,y:-999};addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY},{passive:true});
+  const drop=(x,first)=>({x,y:first?rnd(-H*1.2,-20):rnd(-H*.6,-20),v:rnd(260,620),len:rnd(10,26)|0,g:Array.from({length:30},()=>Math.random()<.5?'1':'0'),off:0});
+  function start(ms=7000){if(RM)return;dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;fs=Math.max(16,Math.min(24,W/60));
+    if(!drops.length){const n=Math.ceil(W/fs);drops=Array.from({length:n},(_,i)=>drop(i*fs+fs/2,true))}running=true;until=performance.now()+ms;last=performance.now();cv.style.opacity=1;btn&&btn.setAttribute('aria-pressed','true')}
+  function stop(){until=0}
+  function frame(now){if(!drops.length)return;const dt=Math.min(.05,(now-last)/1000);last=now;if(running&&now>until){running=false;btn&&btn.setAttribute('aria-pressed','false')}
+    veil+=((running?.62:0)-veil)*Math.min(1,dt*3);
+    g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);g.fillStyle=`rgba(8,9,11,${veil})`;g.fillRect(0,0,W,H);
+    g.font=`600 ${fs}px "IBM Plex Mono",monospace`;g.textAlign='center';g.textBaseline='middle';let alive=0;
+    for(const d of drops){d.y+=d.v*dt*(running?1:1.8);if(Math.random()<.06)d.g[(Math.random()*d.g.length)|0]=Math.random()<.5?'1':'0';
+      if(d.y-d.len*fs>H){if(running){Object.assign(d,drop(d.x));d.y=rnd(-200,-20)}else continue}
+      alive++;
+      for(let k=0;k<d.len;k++){const y=d.y-k*fs;if(y<-fs||y>H+fs)continue;
+        // the rain parts around the cursor
+        const dx=d.x-mouse.x,dy=y-mouse.y,dist=Math.hypot(dx,dy),push=dist<150?(150-dist)/150:0,x=d.x+Math.sign(dx||1)*push*push*70;
+        const a=(1-k/d.len);
+        if(k===0){g.shadowColor=accent;g.shadowBlur=14;g.fillStyle='#fffaf0';g.globalAlpha=1}
+        else{g.shadowBlur=0;g.fillStyle=accent;g.globalAlpha=Math.max(0,a*.95)}
+        g.fillText(d.g[k%d.g.length],x,y)}}
+    g.shadowBlur=0;g.globalAlpha=1;
+    if(!running&&!alive&&veil<.01){drops=[];g.clearRect(0,0,W,H);cv.style.opacity=0}}
+  addEventListener('resize',()=>{if(drops.length){W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr}});
+  let btn=null;return{start,stop,frame,bind(b){btn=b;b.addEventListener('click',()=>{running?stop():start()})}}})();
+/* ---------------- shell ---------------- */
+const out=$('#out'),cmd=$('#cmd');let hist=[],hi=0;
+function print(html,cls){const d=document.createElement('div');if(cls)d.className=cls;d.innerHTML=html;out.appendChild(d);out.scrollTop=out.scrollHeight}
+const findP=a=>{a=(a||'').toLowerCase();return PROJECTS.find(p=>a&&(p.id===a||p.bits===a||p.title.toLowerCase().replace(/[^a-z0-9]/g,'')===a.replace(/[^a-z0-9]/g,'')||p.repo.toLowerCase()===a))};
+const CMDS={
+  help:['list commands',()=>print(Object.entries(CMDS).map(([k,[d]])=>`<span class="acc">${k.padEnd(12)}</span>${d}`).join('\n'))],
+  ls:['list projects',()=>print(PROJECTS.map(p=>`<span class="mut">${p.bits}</span>  ${p.id.padEnd(13)}${esc(p.title)}`).join('\n'))],
+  open:['open &lt;project&gt;  e.g. open nestlink',a=>{const p=findP(a[0]);if(!p)return print('usage: open &lt;'+PROJECTS.map(p=>p.id).join(' | ')+'&gt;','mut');
+    setAccent(p.accent);document.getElementById(p.id).scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});setTimeout(()=>{const bp=pics.find(b=>b.p===p);bp.seen=true;bp.setOn(true)},500);
+    print(`decoding ${esc(p.title)} ...  <a href="${siteUrl(p)}" target="_blank" rel="noopener">${(p.live||'site').toLowerCase()} ↗</a>  <a href="${repoUrl(p)}" target="_blank" rel="noopener">repo ↗</a>`)}],
+  about:['who is this',()=>{print('Preksha Anand. A designer who loves exploring the space between\ncreativity, technology, and human behaviour.\nB.Tech ICT @ DA-IICT (2020–2024) · New Media Design @ NID (2025–present)');document.getElementById('about').scrollIntoView({behavior:RM?'auto':'smooth'})}],
+  whoami:['who are you',()=>print('visitor. currently being converted to binary:\n<span class="acc">'+toBin('visitor')+'</span>')],
+  binary:['binary &lt;text&gt;  encode text',a=>{const t=a.join(' ');print(t?'<span class="acc">'+toBin(t)+'</span>':'usage: binary hello','mut')}],
+  decode:['decode &lt;bits&gt;  bits to text',a=>{try{const b=a.join('').replace(/[^01]/g,'');if(b.length<8)throw 0;const by=b.match(/.{8}/g).map(x=>parseInt(x,2));print(esc(new TextDecoder().decode(new Uint8Array(by))))}catch(e){print('usage: decode 01101000 01101001','mut')}}],
+  rain:['make it rain bits',()=>{Rain.start();print('falling for 7 seconds. move your cursor through it.','mut')}],
+  contact:['how to reach me',()=>{print(`email     <span class="acc">${esc(ME.email)}</span>\nphone     <span class="acc">${esc(ME.phone)}</span>\nlinkedin  <a href="${ME.linkedin}" target="_blank" rel="noopener">${esc(ME.linkedin.replace(/^https?:\/\/(www\.)?/,''))} ↗</a>`);document.getElementById('contact').scrollIntoView({behavior:RM?'auto':'smooth'})}],
+  sudo:['try: sudo hire preksha',a=>{if(a.join(' ').toLowerCase().includes('hire')){print('[sudo] password for visitor: ********\n<span class="acc">permission granted.</span> redirecting to /contact ...');Rain.start(2600);setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:RM?'auto':'smooth'}),900)}else print('visitor is not in the sudoers file. this incident will be reported.','mut')}],
+  date:['today, in binary',()=>{const d=new Date();print(`${d.toDateString()}\n<span class="acc">${[d.getFullYear(),d.getMonth()+1,d.getDate()].map(n=>n.toString(2)).join(' / ')}</span>`)}],
+  history:['past commands',()=>print(hist.map((h,i)=>`${String(i+1).padStart(3)}  ${esc(h)}`).join('\n')||'(empty)','mut')],
+  clear:['clear the screen',()=>{out.innerHTML=''}],
+};
+function run(line){const raw=line.trim();if(!raw)return;hist.push(raw);hi=hist.length;print(`<span class="cmd"><b>$</b> ${esc(raw)}</span>`);
+  let [c,...a]=raw.split(/\s+/);c=c.toLowerCase();if(c==='hire'){c='sudo';a=['hire']}if(c==='projects'||c==='work')c='ls';
+  const P=findP(c);if(!CMDS[c]&&P){c='open';a=[P.id]}
+  if(CMDS[c])CMDS[c][1](a);else print(`command not found: ${esc(c)}. try <span class="acc">help</span>`,'mut')}
+$('#pf').addEventListener('submit',e=>{e.preventDefault();run(cmd.value);cmd.value=''});
+cmd.addEventListener('keydown',e=>{if(e.key==='ArrowUp'){if(hi>0){hi--;cmd.value=hist[hi]}e.preventDefault()}else if(e.key==='ArrowDown'){if(hi<hist.length-1){hi++;cmd.value=hist[hi]}else{hi=hist.length;cmd.value=''}e.preventDefault()}
+  else if(e.key==='Tab'){const v=cmd.value.trim().toLowerCase(),opts=v.startsWith('open ')?PROJECTS.map(p=>'open '+p.id):Object.keys(CMDS);const m=opts.filter(o=>o.startsWith(v));if(v&&m.length){e.preventDefault();cmd.value=m[0]+(v.startsWith('open ')?'':' ')}}});
+['help','ls','open dataprison','open voice','binary hi','rain','sudo hire preksha'].forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.onclick=()=>{run(c);cmd.focus({preventScroll:true})};$('#chips').appendChild(b)});
+print('<span class="mut">PREKSHA-OS 1.0 · '+PROJECTS.length+' projects mounted · type a command and press enter</span>');run('help');
+addEventListener('keydown',e=>{if((e.key==='/'||e.key==='`')&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();document.getElementById('shell').scrollIntoView({behavior:RM?'auto':'smooth'});setTimeout(()=>cmd.focus({preventScroll:true}),RM?0:450)}});
+
+/* ---------------- contact ---------------- */
+(function contact(){const rows=[];
+  if(ME.email)rows.push(`<div class="line"><span class="k">email</span><a href="mailto:${ME.email}" id="em">${esc(ME.email)}</a><button class="btn" data-copy="${esc(ME.email)}" type="button">copy</button></div>`);
+  if(ME.phone)rows.push(`<div class="line"><span class="k">phone</span><a href="tel:${ME.phone.replace(/\s/g,'')}">${esc(ME.phone)}</a><button class="btn" data-copy="${esc(ME.phone)}" type="button">copy</button></div>`);
+  rows.push(`<div class="line"><span class="k">github</span><a href="https://github.com/${ME.github}" target="_blank" rel="noopener">github.com/${esc(ME.github)}</a></div>`);
+  if(ME.linkedin)rows.push(`<div class="line"><span class="k">linkedin</span><a href="${ME.linkedin}" target="_blank" rel="noopener">${esc(ME.linkedin.replace(/^https?:\/\/(www\.)?/,''))}</a></div>`);
+  $('#reach').innerHTML=rows.join('');
+  document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{const v=b.dataset.copy;navigator.clipboard.writeText(v).then(()=>toast('copied: '+v),()=>{const s=getSelection(),rg=document.createRange();rg.selectNodeContents(b.previousElementSibling);s.removeAllRanges();s.addRange(rg);toast('selected, press copy')})});
+})();
+
+/* ---------------- start ---------------- */
+Rain.bind($('#rainBtn'));
+renderProjects();
+(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>{Field.build();heroWords()});
+function loop(now){requestAnimationFrame(loop);Field.frame();pics.forEach(p=>p.frame(now));Trail.frame(now);Rain.frame(now)}
+requestAnimationFrame(loop);
+</script>
+
+</body>
+</html>
