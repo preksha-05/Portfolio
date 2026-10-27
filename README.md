@@ -1,6 +1,6 @@
 # Preksha Anand · Portfolio
 
-**[preksha-05.github.io](https://preksha-05.github.io/)**
+**[preksha-05.github.io](https://preksha-05.github.io/Portfolio/)**
 
 A hand-built, binary-themed portfolio. Everything on the page is stored as bits until you look at it.
 
